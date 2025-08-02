@@ -16,7 +16,8 @@ export default function Home() {
       toolbar_bg: "#f1f3f6",
       enable_publishing: false,
       allow_symbol_change: true,
-      container_id: "tradingview_spy_chart"
+      container_id: "tradingview_spy_chart",
+      studies: ["RSI@tv-basicstudies", "MACD@tv-basicstudies"],
     });
     document.getElementById("tradingview_spy_chart")?.appendChild(script);
   }, []);
