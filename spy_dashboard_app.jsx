@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 export default function Home() {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
     script.async = true;
     script.innerHTML = JSON.stringify({
       autosize: true,
@@ -16,9 +17,14 @@ export default function Home() {
       toolbar_bg: "#f1f3f6",
       enable_publishing: false,
       allow_symbol_change: true,
-      container_id: "tradingview_spy_chart"
+      container_id: "tradingview_spy_chart",
     });
-    document.getElementById("tradingview_spy_chart")?.appendChild(script);
+    const container = document.getElementById("tradingview_spy_chart");
+    container?.appendChild(script);
+
+    return () => {
+      container?.removeChild(script);
+    };
   }, []);
 
   return (
